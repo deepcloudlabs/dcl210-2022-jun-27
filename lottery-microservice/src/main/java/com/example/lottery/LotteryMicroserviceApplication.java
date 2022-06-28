@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({
-	"com.example"
-})
+@ComponentScan({ "com.example" })
 public class LotteryMicroserviceApplication {
 
 	public static void main(String[] args) {

@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.lottery.aspect.Audited;
 import com.example.lottery.service.LotteryService;
 import com.example.random.service.RandomNumberGenerator;
 
@@ -21,6 +22,7 @@ public class StandardLotteryService implements LotteryService {
 	}
 
 	@Override
+	@Audited
 	public List<Integer> draw(int max, int size) {
 		return IntStream.generate( () -> randomNumberGenerator.generate(max))
 				        .distinct()

@@ -5,9 +5,7 @@ import java.util.Random;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
-import com.example.random.service.QualityLevel;
 import com.example.random.service.RandomNumberGenerator;
-import com.example.random.service.ServiceQuality;
 
 //@ServiceQuality(QualityLevel.CHEAP)
 @Service

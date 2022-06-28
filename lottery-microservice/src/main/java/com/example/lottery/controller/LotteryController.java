@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
+import com.example.lottery.aspect.Audited;
+import com.example.lottery.aspect.Profiled;
 import com.example.lottery.service.LotteryService;
 
 // Declarative/Descriptive Programming
@@ -21,6 +23,7 @@ import com.example.lottery.service.LotteryService;
 @RequestMapping("/numbers")
 @CrossOrigin
 @Validated
+@Audited
 public class LotteryController {
 
 	private final LotteryService lotteryService;
@@ -31,6 +34,7 @@ public class LotteryController {
 	}
 
 	@GetMapping(params="column")
+	@Profiled
 	public List<List<Integer>> getLotteryNumbers(@RequestParam @Min(3) @Max(25) int column){
 		return lotteryService.draw(60,6,column);
 	}

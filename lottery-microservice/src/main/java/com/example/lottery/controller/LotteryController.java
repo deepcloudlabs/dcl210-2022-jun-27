@@ -27,6 +27,7 @@ public class LotteryController {
 	
 	public LotteryController(LotteryService lotteryService) {
 		this.lotteryService = lotteryService;
+		System.err.println(lotteryService.getClass().getName());
 	}
 
 	@GetMapping(params="column")

@@ -17,6 +17,7 @@ public class StandardLotteryService implements LotteryService {
 	//@ServiceQuality(QualityLevel.CHEAP)
 	public void setRandomNumberGenerator(RandomNumberGenerator randomNumberGenerator) {
 		this.randomNumberGenerator = randomNumberGenerator;
+		System.err.println(randomNumberGenerator.getClass().getName());
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import com.example.random.service.business.SecureRandomNumberGenerator;
 module com.example.random {
 	exports com.example.random.service;
 	provides RandomNumberGenerator
-	with //FastRandomNumberGenerator, 
+	with FastRandomNumberGenerator, 
 	     SecureRandomNumberGenerator,
 	     CheapRandomNumberGenerator;
 }

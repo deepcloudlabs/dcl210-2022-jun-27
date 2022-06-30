@@ -1,29 +1,32 @@
 package com.example;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
-import java.util.List;
 import java.util.concurrent.SubmissionPublisher;
+import java.util.concurrent.TimeUnit;
 
 public class StudyFlowApi {
 
 	public static void main(String[] args) {
 		System.err.println("Application has just started.");
-		SubmissionPublisher<TradeEvent> publisher = new SubmissionPublisher<>();
-		var trades = List.of(
-				new TradeEvent("orcl", 100, 100),
-				new TradeEvent("ibm", 200, 100),
-				new TradeEvent("msft", 300, 100),
-				new TradeEvent("redhat", 400, 100),
-				new TradeEvent("orcl", 500, 100)
-		);		
-		publisher.subscribe(new SlowSubscriber());
-		publisher.subscribe(new FastSubscriber());
-		trades.forEach(publisher::submit);
-		System.err.println("Application has just completed.");
-		
-		try {TimeUnit.SECONDS.sleep(30);}catch (Exception e) {}
+		try(
+				SubmissionPublisher<TradeEvent> publisher = new SubmissionPublisher<>()
+				){
+			var trades = List.of(
+					new TradeEvent("orcl", 100, 100),
+					new TradeEvent("ibm", 200, 100),
+					new TradeEvent("msft", 300, 100),
+					new TradeEvent("redhat", 400, 100),
+					new TradeEvent("orcl", 500, 100)
+					);		
+			publisher.subscribe(new SlowSubscriber());
+			publisher.subscribe(new FastSubscriber());
+			trades.forEach(publisher::submit);
+			System.err.println("Application has just completed.");
+			
+			try {TimeUnit.SECONDS.sleep(30);}catch (Exception e) {}			
+		}
 
 	}
 
